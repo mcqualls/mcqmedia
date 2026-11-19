@@ -1,0 +1,121 @@
+/* MCQ Media: dusk-over-the-siege palette taken from the Beards of Iron title art.
+   Deliberately dark, single theme. Pixel display face for headings, Inter for reading. */
+:root {
+  --night: #17121f;     /* page ground, purple-black of the night sky */
+  --dusk: #241c33;      /* raised panels */
+  --dusk-line: #3a2f4f; /* hairlines on panels */
+  --ember: #f07a34;     /* forge fire, links and calls to action */
+  --brass: #d9a441;     /* helmet bands, small labels */
+  --bone: #f1e8da;      /* main text */
+  --ash: #b9b0c6;       /* secondary text */
+  --font-display: "Pixelify Sans", "Courier New", monospace;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--ember); text-underline-offset: 3px; }
+a:hover { color: var(--brass); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); letter-spacing: 0.01em; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+h3 { font-size: 1.3rem; }
+p { margin: 0; }
+.prose p + p, .prose p + ul, .prose ul + p, .prose h2 + p, .prose h3 + p { margin-top: 0.9em; }
+.label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  color: var(--brass);
+}
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--dusk-line); }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--bone); text-decoration: none; font-family: var(--font-display); font-size: 1.35rem; }
+.brand-mark { width: 34px; height: 34px; border: 2px solid var(--brass); display: grid; place-items: center; font-size: 0.8rem; color: var(--brass); letter-spacing: 0.04em; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.95rem; }
+.site-nav a { color: var(--ash); text-decoration: none; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--bone); }
+
+/* Hero with the siege painting */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--dusk-line); }
+.hero-art { position: absolute; inset: 0; background: var(--night) center 62% / cover no-repeat; }
+.hero-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--night) 0%, rgba(23,18,31,0.88) 38%, rgba(23,18,31,0.25) 75%, rgba(23,18,31,0.1) 100%); }
+.hero .wrap { position: relative; padding-block: clamp(56px, 10vw, 120px); display: grid; gap: 18px; max-width: 1040px; }
+.hero .lede { max-width: 34ch; font-size: 1.15rem; color: var(--bone); }
+.hero .wrap > * { max-width: 560px; }
+
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid var(--brass); color: var(--brass); font-family: var(--font-display); font-size: 0.9rem; width: fit-content; }
+.btn { display: inline-block; padding: 12px 20px; background: var(--ember); color: var(--night); font-weight: 600; text-decoration: none; border-radius: 2px; width: fit-content; }
+.btn:hover { background: var(--brass); color: var(--night); }
+
+section { padding-block: clamp(48px, 7vw, 80px); }
+section + section { border-top: 1px solid var(--dusk-line); }
+
+/* Game feature list */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 36px; margin-top: 32px; }
+.feature { display: grid; gap: 8px; min-width: 0; align-content: start; }
+.feature p { color: var(--ash); }
+
+/* Portrait strip */
+.roster { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 16px; margin-top: 28px; }
+.roster figure { margin: 0; background: var(--dusk); border: 1px solid var(--dusk-line); padding: 12px 10px 10px; display: grid; gap: 8px; justify-items: center; }
+.roster img { height: 150px; width: auto; object-fit: contain; }
+.roster figcaption { font-family: var(--font-display); font-size: 1rem; text-align: center; }
+.roster figcaption span { display: block; font-family: var(--font-body); font-size: 0.8rem; color: var(--ash); }
+
+/* Studio game card */
+.game-card { display: grid; grid-template-columns: 160px 1fr; gap: 28px; align-items: center; background: var(--dusk); border: 1px solid var(--dusk-line); padding: 24px; margin-top: 28px; }
+.game-card img { width: 160px; height: 160px; border: 2px solid var(--brass); }
+.game-card .body { display: grid; gap: 12px; min-width: 0; }
+.game-card p { color: var(--ash); }
+@media (max-width: 560px) {
+  .game-card { grid-template-columns: 1fr; }
+  .game-card img { width: 120px; height: 120px; }
+}
+
+/* Plain reading pages */
+.page-head { padding-block: 48px 8px; display: grid; gap: 10px; }
+.prose > * { max-width: 68ch; }
+.prose h2 { font-size: 1.5rem; margin-top: 2em; }
+.prose ul { padding-left: 1.2em; margin: 0; }
+.prose li + li { margin-top: 0.4em; }
+.prose .muted { color: var(--ash); }
+.email { font-family: var(--font-display); font-size: 1.4rem; color: var(--bone); user-select: all; }
+.faq { display: grid; gap: 22px; margin-top: 12px; }
+.faq h3 { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; }
+.faq p { color: var(--ash); margin-top: 4px; }
+
+.site-footer { border-top: 1px solid var(--dusk-line); padding-block: 28px; color: var(--ash); font-size: 0.9rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-footer a { color: var(--ash); }
+
+@media (max-width: 640px) {
+  .hero-art { background-position: 70% 60%; }
+  .hero-art::after { background: linear-gradient(180deg, rgba(23,18,31,0.55) 0%, rgba(23,18,31,0.85) 55%, var(--night) 100%); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: background-color 120ms ease; }
+}
